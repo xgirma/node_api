@@ -1,0 +1,31 @@
+{
+  "name": "api_study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xgirma/api_study.git"
+  },
+  "keywords": [],
+  "author": "Girma Nigusse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xgirma/api_study/issues"
+  },
+  "homepage": "https://github.com/xgirma/api_study#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.14.1",
+    "morgan": "^1.7.0",
+    "response-time": "^2.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
+  }
+}
