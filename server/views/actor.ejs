@@ -6,15 +6,10 @@
 </head>
 
 <body>
-<h1>Portrait of Famous people</h1>
-<h2>by Vince Low</h2>
+<h1> <%= actor.name.first %> <%= actor.name.last%> </h1>
 
-<% actors.forEach(function(actor) { %>
 <div>
     <img src="/api/pics/<%= actor.name.last %>_sm.jpg" alt="<%= actor.name.last %>">
-
-    <a href="actors/<%= actor._id %>"><%= actor.name.first %> <%= actor.name.last%></a>
 </div>
-<% }); %>
 
 </body>

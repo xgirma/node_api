@@ -19,6 +19,6 @@ app.set('view engine', 'ejs');
 require('./middleware/third.party')(app);
 
 app.use('/api', api);
-app.use('/api', express.static(path.join(__dirname, 'images')));
+app.use('/api/pics', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
