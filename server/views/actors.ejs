@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Actors Index</title>
+</head>
+
+<body>
+<h1>Portrait of Famous people</h1>
+<h2>by Vince Low</h2>
+
+<% actors.forEach(function(actor) { %>
+<div>
+    <img src="/api/<%= actor.name.last %>_sm.jpg" alt="">
+
+    <a href="<%= actor.name.last %>"><%= actor.name.first %> <%= actor.name.last%></a>
+</div>
+<% }); %>
+
+</body>

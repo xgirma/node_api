@@ -15,13 +15,10 @@ config.environment = process.env.NODE_ENV;
 var envConfig;
 
 try {
-  envConfig = require('./environment' + config.environment);
+  envConfig = require('./' + config.environment);
   envConfig = envConfig || {};
 } catch (e) {
   envConfig = {};
 }
 
 module.exports = _.merge(config, envConfig);
-
-
-

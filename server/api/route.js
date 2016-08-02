@@ -2,6 +2,6 @@
 
 var router = require('express').Router();
 
-router.use('/home', require('./home/routes'));
+router.use('/actors', require('./actors/routes'));
 
 module.exports = router;

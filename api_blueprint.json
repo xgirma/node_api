@@ -1,0 +1,13 @@
+{
+  "GET /actors" :{
+    "description": "returns all actors",
+    "response": "200 application/json",
+    "data": [{}, {}, {}]
+  },
+
+  "GET /actors/:id" : {
+    "description": "returns one actor represented by its id",
+    "response": "200 application/json",
+    "data": {}
+  }
+}
