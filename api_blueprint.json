@@ -9,5 +9,11 @@
     "description": "returns one actor represented by its id",
     "response": "200 application/json",
     "data": {}
+  },
+
+  "GET /actors/:id/movies" : {
+    "description": "returns movies by actor represented by its id",
+    "response": "200 application/json",
+    "data": [{}, {}, {}]
   }
 }
