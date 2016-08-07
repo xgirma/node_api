@@ -7,7 +7,7 @@ var seed = require('./seed.json');
 exports.seedActors = function (req, res, next) {
   Actors.create(seed.actors, function (err) {
     if (err) {
-      //todo
+      res.redirect('/v1/actors'); //todo
     }
     res.json({"status": "ok"});
   });
@@ -16,7 +16,7 @@ exports.seedActors = function (req, res, next) {
 exports.removeActors = function(req, res, next){
   Actors.remove({}, function (err) {
     if(err){
-      //todo
+      res.redirect('/v1/actors'); //todo
     }
     res.json({"status": "ok"});
   })
@@ -25,7 +25,7 @@ exports.removeActors = function(req, res, next){
 exports.seedMovies = function (req, res, next) {
   Movies.create(seed.movies, function (err) {
     if (err) {
-      //todo
+      res.redirect('/v1/actors'); //todo
     }
     res.json({"status": "ok"});
   });
@@ -34,7 +34,7 @@ exports.seedMovies = function (req, res, next) {
 exports.removeMovies = function(req, res, next){
   Movies.remove({}, function (err) {
     if(err){
-      //todo
+      res.redirect('/v1/actors'); //todo
     }
     res.json({"status": "ok"});
   })

@@ -6,7 +6,7 @@ exports.params = function(req, res, next, id){
   Actors.findById(id)
     .then(function (actor) {
       if(!actor){
-        res.redirect('/v1/actors');
+        res.redirect('/v1/actors'); //todo
       } else {
         req.actor = actor;
         next();

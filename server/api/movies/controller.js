@@ -6,7 +6,7 @@ exports.params = function (req, res, next, id) {
   Movies.findById(id)
     .then(function (actor) {
       if (!actor) {
-        res.redirect('/v1/actors');
+        res.redirect('/v1/actors'); //todo
       } else {
         req.actor = actor;
         next();
@@ -48,7 +48,7 @@ exports.post = function (req, res, next) {
       });
       actor.save(function (err) {
         if (err) {
-          console.log('error saving');
+          res.redirect('/v1/actors'); //todo
         } else {
           res.json(added);
         }
@@ -65,11 +65,12 @@ exports.delete = function (req, res, next) {
   Movies.findById(actor)
     .then(function () {
       var remainingMovies = actor.movies.pull({
-        _id: body.id
+        title: body.title,
+        year: body.year
       });
       actor.save(function (err) {
         if (err) {
-          console.log('error saving');
+          res.redirect('/v1/actors'); //todo
         } else {
           res.json(remainingMovies);
         }
