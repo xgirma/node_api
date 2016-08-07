@@ -7,11 +7,23 @@ var year = date.getFullYear();
 
 var moviesSchema = new Schema({
   _id: String,
-  movies: [{
-    _id: String,
-    title: {type: String, required: true},
-    year: {type: Number, min: 1900, max: year}
-  }]
+  movies: [
+    {
+      _id: String,
+      title: {
+        type: String,
+        required: true
+      },
+      year: {
+        type: Number,
+        min: 1900,
+        max: year
+      }
+    },
+    {
+      _id: false
+    }
+  ]
 });
 
 module.exports = mongoose.model('movies', moviesSchema);

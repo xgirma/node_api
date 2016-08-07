@@ -20,7 +20,6 @@ exports.get = function(req, res, next){
   Actors.find({})
     .then(function(actors){
       res.json(actors);
-      // res.render('actors', {actors: actors});
     }, function (err) {
       next(err);
     });
@@ -29,5 +28,4 @@ exports.get = function(req, res, next){
 exports.getOne = function(req, res, next){
   var actor = req.actor;
   res.json(actor);
-  // res.render('movies', {actor:actor});
 };
