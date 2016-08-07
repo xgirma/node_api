@@ -6,7 +6,7 @@ exports.params = function(req, res, next, id){
   Actors.findById(id)
     .then(function (actor) {
       if(!actor){
-        next(new Error("No actor found with this name"));
+        res.redirect('/v1/actors');
       } else {
         req.actor = actor;
         next();
