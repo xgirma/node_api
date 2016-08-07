@@ -14,11 +14,11 @@ app.set('view engine', 'ejs');
 
 require('./middleware/third.party')(app);
 
-app.use('/api', api);
-app.use('/api/pics', express.static(path.join(__dirname, 'images')));
+app.use('/v1', api);
+app.use('/pics', express.static(path.join(__dirname, 'images')));
 
 app.get('*', function(req, res){
-  res.redirect('/api/actors');
+  res.redirect('/v1/actors');
 });
 
 module.exports = app;

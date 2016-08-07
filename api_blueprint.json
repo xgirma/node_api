@@ -11,8 +11,28 @@
     "data": {}
   },
 
-  "GET /actors/:id/movies" : {
-    "description": "returns movies by actor represented by its id",
+  "GET /movies/" : {
+    "description": "returns movies by all actors",
+    "response": "200 application/json",
+    "data": [{}, {}, {}]
+  },
+
+  "GET /movies/:id" : {
+    "description": "returns all movies by actor represented by its id",
+    "response": "200 application/json",
+    "data": [{}, {}, {}]
+  },
+
+  "POST /movies/:id" : {
+    "description": "returns newly posted movie",
+    "request": "movie: id, title, year",
+    "response": "200 application/json",
+    "data": {}
+  },
+
+  "DELETE /movies/:id" : {
+    "description": "returns remaining movies by actor represented by its id",
+    "request": "movie: id",
     "response": "200 application/json",
     "data": [{}, {}, {}]
   }

@@ -6,7 +6,7 @@ exports.params = function(req, res, next, id){
   Actors.findById(id)
     .then(function (actor) {
       if(!actor){
-        next(new Error("No actor found"));
+        next(new Error("No actor found with this name"));
       } else {
         req.actor = actor;
         next();
@@ -19,7 +19,8 @@ exports.params = function(req, res, next, id){
 exports.get = function(req, res, next){
   Actors.find({})
     .then(function(actors){
-      res.render('actors', {actors: actors});
+      res.json(actors);
+      // res.render('actors', {actors: actors});
     }, function (err) {
       next(err);
     });
@@ -27,5 +28,6 @@ exports.get = function(req, res, next){
 
 exports.getOne = function(req, res, next){
   var actor = req.actor;
-  res.render('actor', {actor:actor});
+  res.json(actor);
+  // res.render('movies', {actor:actor});
 };
