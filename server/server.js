@@ -18,9 +18,8 @@ require('./middleware/custom')(app);
 app.use('/v1', api);
 app.use('/pics', express.static(path.join(__dirname, 'images')));
 
-//todo
 app.get('*', function(req, res){
-  res.redirect('/v1/actors');
+  res.sendStatus(404);
 });
 
 require('./middleware/error.handler')(app);

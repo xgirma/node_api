@@ -4,10 +4,11 @@ var Actors = require('./model');
 
 exports.params = function(req, res, next, id){
   var name = id[0].toUpperCase() + id.slice(1).toLowerCase();
-  Actors.findById(name)
+  Actors
+    .findById(name)
     .then(function (actor) {
       if(!actor){
-        res.status(404).json({"message" :'No actor called ' + req.params.id});
+        res.sendStatus(404);
       } else {
         req.actor = actor;
         next();
@@ -18,9 +19,10 @@ exports.params = function(req, res, next, id){
 };
 
 exports.get = function(req, res, next){
-  Actors.find({})
+  Actors
+    .find({})
     .then(function(actors){
-      res.status(200).json(actors);
+      res.json(actors);
     }, function (err) {
       next(err);
     });
@@ -28,5 +30,5 @@ exports.get = function(req, res, next){
 
 exports.getOne = function(req, res, next){
   var actor = req.actor;
-  res.status(200).json(actor);
+  res.json(actor);
 };

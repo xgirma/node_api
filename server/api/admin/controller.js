@@ -5,37 +5,42 @@ var Movies = require('./../movies/model');
 var seed = require('./seed.json');
 
 exports.seedActors = function (req, res, next) {
-  Actors.create(seed.actors, function (err) {
-    if (err) {
-      res.status(500).json({"message": "Seeding actors fails"});
-    }
-    res.status(201).json({"message": "Seeding actors successful"});
-  });
+  Actors
+    .remove({}, function (err) {
+      if (err) res.sendStatus(500);
+    });
+
+  Actors
+    .create(seed.actors, function (err) {
+      if (err) res.sendStatus(500);
+      res.sendStatus(201);
+    });
 };
 
-exports.removeActors = function(req, res, next){
-  Actors.remove({}, function (err) {
-    if(err){
-      res.status(500).json({"message": "Seeding actors fails"});
-    }
-    res.status(200).json({"message": "Removing actors successful"});
+exports.removeActors = function (req, res, next) {
+  Actors
+    .remove({}, function (err) {
+    if (err) res.sendStatus(500);
+    res.sendStatus(202);
   });
 };
 
 exports.seedMovies = function (req, res, next) {
+  Movies
+    .remove({}, function (err) {
+      if (err) res.sendStatus(500);
+    });
+
   Movies.create(seed.movies, function (err) {
-    if (err) {
-      res.status(500).json({"message": "Seeding movies fails"});
-    }
-    res.status(201).json({"message": "Movies seed successful"});
+    if (err) res.sendStatus(500);
+    res.sendStatus(201);
   });
 };
 
-exports.removeMovies = function(req, res, next){
-  Movies.remove({}, function (err) {
-    if(err){
-      res.status(500).json({"message": "Seeding movies fails"});
-    }
-    res.status(200).json({"message": "Removing movies successful"});
+exports.removeMovies = function (req, res, next) {
+  Movies
+    .remove({}, function (err) {
+    if (err) res.sendStatus(500);
+    res.sendStatus(202);
   });
 };
