@@ -3,10 +3,11 @@
 var Movies = require('./model');
 
 exports.params = function (req, res, next, id) {
-  Movies.findById(id)
+  var name = id[0].toUpperCase() + id.slice(1).toLowerCase();
+  Movies.findById(name)
     .then(function (actor) {
       if (!actor) {
-        res.redirect('/v1/actors'); //todo
+        res.status(404).json({"message" :'No movies by ' + req.params.id});
       } else {
         req.actor = actor;
         next();
@@ -19,7 +20,7 @@ exports.params = function (req, res, next, id) {
 exports.get = function (req, res, next) {
   Movies.find({})
     .then(function (movieByActors) {
-      res.json(movieByActors);
+        res.status(200).json(movieByActors);
     }, function (err) {
       next(err);
     });
@@ -29,7 +30,11 @@ exports.getOne = function (req, res, next) {
   var actor = req.actor;
   Movies.findById(actor)
     .then(function (byActor) {
-      res.json(byActor.movies);
+      if (req.query.limit >= 0) {
+        res.json.status(206).(byActor.movies.slice(0, req.query.limit));
+      } else {
+        res.status(200).json(byActor);
+      }
     }, function (err) {
       next(err);
     });
@@ -48,9 +53,9 @@ exports.post = function (req, res, next) {
       });
       actor.save(function (err) {
         if (err) {
-          res.redirect('/v1/actors'); //todo
+          res.status(409).json({"message": body.title + '('+ body.year + ')' + ' already exist'});
         } else {
-          res.json(added);
+          res.status(201).json(added);
         }
       });
     }, function (err) {
@@ -70,9 +75,9 @@ exports.delete = function (req, res, next) {
       });
       actor.save(function (err) {
         if (err) {
-          res.redirect('/v1/actors'); //todo
+          res.status(500).json({"message": "Save failed"});
         } else {
-          res.json(remainingMovies);
+          res.status(200).json(remainingMovies);
         }
       });
     }, function (err) {

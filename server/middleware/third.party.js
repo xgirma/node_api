@@ -7,7 +7,7 @@ var responseTime = require('response-time');
 module.exports = function (app) {
   app.use(morgan('dev'));
 
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.urlencoded({extended: false}));
   app.use(bodyParser.json());
 
   app.use(responseTime({digits: 4}));
